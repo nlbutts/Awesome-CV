@@ -681,6 +681,24 @@
   \vspace{-4.0mm}
 }
 
+% Define an environment for cvpatent
+\newenvironment{cvpatents}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \begin{center}
+    \setlength\tabcolsep{1ex}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+% Define a line of cv patent
+% Usage: \cvpatent{<year>}{<title>}{<number>}
+\newcommand*{\cvpatent}[3]{%
+  \skilltypestyle{#3} & \honortitlestyle{#2} \\
+}
+
 
 %-------------------------------------------------------------------------------
 %                Commands for elements of Cover Letter
