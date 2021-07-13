@@ -350,9 +350,10 @@
 % Usage: \recipient{<recipient name>}{<recipient address>}
 % Usage: \recipientname{<recipient name>}
 % Usage: \recipientaddress{<recipient address>}
-\newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
+%\newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
+\newcommand*{\recipient}[1]{\def\@recipientname{#1}}
 \newcommand*{\recipientname}[1]{\def\@recipientname{#1}}
-\newcommand*{\recipientaddress}[1]{\def\@recipientaddress{#1}}
+%\newcommand*{\recipientaddress}[1]{\def\@recipientaddress{#1}}
 
 % Defines the title for letter (cover letter only, optional)
 % Usage: \lettertitle{<title>}
@@ -728,9 +729,9 @@
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \recipienttitlestyle{\@recipientname} & \letterdatestyle{\@letterdate}
   \end{tabular*}
-  \begin{singlespace}
-    \recipientaddressstyle{\@recipientaddress} \\\\
-  \end{singlespace}
+  % \begin{singlespace}
+  %   \recipientaddressstyle{\@recipientaddress} \\\\
+  % \end{singlespace}
   \ifthenelse{\isundefined{\@lettertitle}}
     {}
     {\lettertitlestyle{\@lettertitle} \\}
