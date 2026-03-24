@@ -1,0 +1,4 @@
+#!/bin/bash
+docker run --rm --user 1000:1000 -i -w /doc -v /home/nlbutts/projects/Awesome-CV:/doc texlive/texlive:latest make
+cp nlb/resume.pdf NickButtsResume.pdf
+
