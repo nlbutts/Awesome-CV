@@ -1,9 +1,9 @@
 .PHONY: nlb
 
 CC = lualatex
-EXAMPLES_DIR = nlb
-RESUME_DIR = nlb/resume
-CV_DIR = nlb/cv
+EXAMPLES_DIR = aj
+RESUME_DIR = aj/resume
+CV_DIR = aj/cv
 RESUME_SRCS = $(shell find $(RESUME_DIR) -name '*.tex')
 CV_SRCS = $(shell find $(CV_DIR) -name '*.tex')
 
