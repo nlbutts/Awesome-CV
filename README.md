@@ -10,7 +10,30 @@ Think of it like a recipe:
 - **Docker is the kitchen:** it provides the tools without installing LaTeX on your computer.
 - **Building means making the PDF** from your saved text files.
 
-## 1. Open the Project
+## 1. Get and Open the Project
+
+### Get the Project from GitHub
+
+The finished resume lives on the `aj` branch of
+<https://github.com/nlbutts/Awesome-CV>. The default `master` branch does **not**
+contain the `aj` folder, so you must switch to the `aj` branch after cloning.
+
+Install [Git](https://git-scm.com/downloads) first if the `git` command is not
+found. Then open a terminal (on Windows, use **PowerShell** or **WSL**) and run
+these commands one at a time:
+
+```bash
+git clone https://github.com/nlbutts/Awesome-CV.git
+cd Awesome-CV
+git checkout aj
+```
+
+The first command copies the project into a new `Awesome-CV` folder inside your
+current directory. The second enters that folder, and the third switches to the
+branch that holds the resume. To bring down later changes, run `git pull` from
+inside the project folder.
+
+### Open the Project
 
 Open the `Awesome-CV` folder in VS Code. Choose **Terminal > New Terminal**.
 The terminal is where you type the commands shown below. Paste one command block
@@ -177,6 +200,21 @@ runs the resume build there, and removes the temporary container afterward.
 Your source files and PDF stay on your computer. The user ID options help keep
 the generated files owned by your account.
 
+### Build on Windows
+
+The command above uses Bash syntax (`$(id -u)`, `$PWD`), so it only works in a
+**WSL Bash** terminal. In **PowerShell**, run this instead, from the project's
+main folder:
+
+```powershell
+docker run --rm -i -w /doc -v "${PWD}:/doc" texlive/texlive:latest make resume.pdf
+```
+
+In **Command Prompt**, the same command works if you replace `${PWD}` with
+`%cd%`. The `--user` option is omitted on Windows because Docker Desktop handles
+file ownership itself. The result is the same: **`aj\resume.pdf`**. To build all
+three documents on Windows, leave off `resume.pdf` just as in the Bash version.
+
 Open `aj/resume.pdf` in a PDF viewer and check the wording, spacing, and page
 breaks. After each edit, save, run the command again, and reopen or refresh the PDF.
 If the output asks you to rerun LaTeX for references, run the command again.
@@ -189,6 +227,7 @@ cp aj/resume.pdf AdalynButtsResume.pdf
 ```
 
 You can replace the destination name with your own, such as `MyResume.pdf`.
+In PowerShell, use `Copy-Item aj\resume.pdf AdalynButtsResume.pdf` instead.
 
 ### Build All Three Documents
 
